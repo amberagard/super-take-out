@@ -4,19 +4,20 @@ block content
     h1= title
 
     #user= user.email
+    #total $0.00
+
+    button#add.button.button-royal Add Row
 
     form#order
-        input#input(type='number', name='qty')
-        select.menu(name='menu')
-            option Select From Menu
-                each menu in menus
-                    option= menu
-        select.dish(name='dish')
-            option Select a Dish
-
-        button#add Add Row
-
-    #pendingOrders
+        .menu-item
+            input(type='number', name='qty')
+            select.menu(name='menu')
+                option Select From Menu
+                    each menu in menus
+                        option= menu
+            select.dish(name='dish')
+                option Select a Dish
+            button#remove.button.button-royal.button-tiny X
 
 block scripts
     script(src='/js/es6/compiled/orders.js')

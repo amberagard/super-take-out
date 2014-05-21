@@ -3,7 +3,6 @@
 var users = global.nss.db.collection('users');
 var bcrypt = require('bcrypt');
 var Mongo = require('mongodb');
-//var _ = require('lodash');
 
 class User {
     constructor(obj) {

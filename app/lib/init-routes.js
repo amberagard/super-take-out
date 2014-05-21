@@ -28,6 +28,7 @@ function load(app, fn){
   app.get('/orders', dbg, orders.new);
 
   app.get('/dishes/:menu', dbg, dishes.menu);
+  //app.get('/dishes/:menu/cost', dbg, dishes.cost);
 
   console.log('Routes Loaded');
   fn();
