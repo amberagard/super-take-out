@@ -18,7 +18,7 @@ exports.create = (req, res)=>{
         User.addOrder(user, req.body, function(){
             res.send('success');
         });
-
+    // Order.create(req.dession.userId, req.body, ()=>res.redirect('orders/history'));
     });
     console.log('user id');
     console.log(req.session.userId);
