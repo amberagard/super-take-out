@@ -26,10 +26,11 @@ function load(app, fn){
   app.post('/login', dbg, users.login);
 
   app.get('/orders', dbg, orders.new);
-  //app.get('/orders/history', dbg, home.index);
+  app.get('/orders/history', dbg, users.history);
   app.post('/orders', dbg, orders.create);
 
   app.get('/dishes/:menu', dbg, dishes.menu);
+  app.get('/dish/:dish', dbg, dishes.dish);
 
   console.log('Routes Loaded');
   fn();

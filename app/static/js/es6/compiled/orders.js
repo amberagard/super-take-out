@@ -9,6 +9,13 @@
     $('form#order').on('blur', 'input', formChanged);
     $('form#order').on('change', '.dish', formChanged);
     $('.order').click(order);
+    $('#history').click(history);
+  }
+  function history() {
+    ajax('/orders/history', 'get', null, (function(h) {
+      console.log(h[0]);
+      $('#orderhistory').append(h);
+    }));
   }
   function order() {
     var orderItems = $('.menu-item').toArray().map(function(item) {
@@ -21,7 +28,6 @@
       };
     });
     ajax('/orders/', 'post', {orderItems: orderItems}, (function(h) {
-      alert('hi');
       window.location = '/orders';
     }));
     return false;

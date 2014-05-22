@@ -19,3 +19,11 @@ exports.login = (req, res)=>{
         res.redirect('/');
     });
 };
+
+exports.history = (req, res)=>{
+    User.findByUserId(req.session.userId, user=>{
+        var orders = user.orders;
+        res.send(orders);
+    });
+
+};

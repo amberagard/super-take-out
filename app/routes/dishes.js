@@ -8,3 +8,9 @@ exports.menu = (req, res)=>{
         res.render('dishes/menu', {dishes:dishes});
     });
 };
+
+exports.dish = (req, res)=>{
+    Dish.findByDishId(req.params.dish, dish=>{
+        res.send(dish);
+    });
+};

@@ -14,6 +14,14 @@
         $('form#order').on('blur', 'input', formChanged);
         $('form#order').on('change', '.dish', formChanged);
         $('.order').click(order);
+        $('#history').click(history);
+    }
+
+    function history() {
+        ajax('/orders/history', 'get', null, h=>{
+            console.log(h[0]);
+            $('#orderhistory').append(h);
+        });
     }
 
     function order() {
@@ -25,7 +33,6 @@
 
         });
         ajax('/orders/', 'post', {orderItems:orderItems}, h=>{
-            alert('hi');
             window.location = '/orders';
         });
 
