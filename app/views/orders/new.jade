@@ -7,17 +7,21 @@ block content
     #total $0.00
 
     button#add.button.button-royal Add Row
+    button#history.button.button-royal View Order History
 
-    form#order
+
+    form#order(action='/orders', method='post')
+        button.order.button.button-royal Order Food
         .menu-item
             input(type='number', name='qty')
-            select.menu(name='menu')
+            select.menu
                 option Select From Menu
                     each menu in menus
                         option= menu
-            select.dish(name='dish')
+            select.dish(name='dishId[]')
                 option Select a Dish
             button#remove.button.button-royal.button-tiny X
+
 
 block scripts
     script(src='/js/es6/compiled/orders.js')

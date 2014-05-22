@@ -13,6 +13,23 @@
         $('form#order').on('change', 'input', formChanged);
         $('form#order').on('blur', 'input', formChanged);
         $('form#order').on('change', '.dish', formChanged);
+        $('.order').click(order);
+    }
+
+    function order() {
+        var orderItems = $('.menu-item').toArray().map(function(item) {
+            var $item = $(item);
+            var qty = $item.find('input').val() * 1;
+            var menuItem = $item.find('.dish option:selected').val();
+            return {qty:qty, item:menuItem};
+
+        });
+        ajax('/orders/', 'post', {orderItems:orderItems}, h=>{
+            alert('hi');
+            window.location = '/orders';
+        });
+
+        return false;
     }
 
     var total = 0;
@@ -59,7 +76,7 @@
     }
 
     function add() {
-        var item = $('form#order > .menu-item:first-child');
+        var item = $('form#order > .menu-item:last-child');
         $('form#order').append(item.clone());
     }
 

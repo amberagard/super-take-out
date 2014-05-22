@@ -28,6 +28,16 @@ class User {
         });
     }
 
+    static addOrder(user, order, fn) {
+        if(!user.orders) {
+            user.orders = [];
+        }
+        user.orders.push(order);
+        users.update({_id:user._id}, user, function(e, u){
+            fn(u);
+        });
+    }
+
     static findByUserId(userId, fn) {
         userId = Mongo.ObjectID(userId);
         users.findOne({_id:userId}, (e, u)=>{
